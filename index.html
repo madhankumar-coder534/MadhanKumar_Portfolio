@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Web Developer Portfolio</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          scroll-behavior: smooth;
+      }
+      
+      body {
+          background: url('your-background.jpg') no-repeat center center fixed;
+          background-size: cover;
+          font-family: 'Orbitron', sans-serif;
+          color: #00ff99;
+          text-align: center;
+          background-color: black;
+      }
+      
+      /* Navigation Bar */
+      nav {
+          display: flex;
+          justify-content: space-between;
+          padding: 15px 30px;
+          background: rgba(0, 255, 153, 0.2);
+          box-shadow: 0px 0px 20px #00ff99;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 100;
+      }
+      
+      ul {
+          list-style: none;
+          display: flex;
+      }
+      
+      ul li {
+          margin: 0 15px;
+      }
+      
+      ul li a {
+          text-decoration: none;
+          color: #00ff99;
+          transition: 0.3s;
+      }
+      
+      ul li a:hover {
+          color: #ff00ff;
+      }
+      
+      /* Section Styling */
+      .slide {
+          padding: 100px 20px;
+          min-height: 100vh;
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 1s ease-in-out;
+          background: rgba(0, 0, 0, 0.6);
+          border-radius: 10px;
+          box-shadow: 0px 0px 15px #00ff99;
+          margin-top: 60px;
+      }
+      
+      .slide.active {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      
+      /* Timeline Style */
+      .timeline {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      
+      /* About Section Styling */
+      /* ======= About Section ======= */
+      #about {
+          background: url('./Assets/your-background.jpg') no-repeat center center fixed;
+          background-size: cover;
+          color: #fff;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 80px 20px 20px; /* extra space from top */
+          text-align: left;
+          position: relative;
+      }
+      
+      
+          #about h2 {
+              font-size: 2.5rem;
+              color: #eff1f0;
+              margin-bottom: 40px;
+              animation: neonPop 1.8s ease-out forwards;
+             
+          }
+      
+      
+      #about-content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 50px;
+          width: 100%;
+          max-width: 1100px;
+      }
+      
+      #about-content img {
+          width: 280px;
+          height: auto;
+          border-radius: 12px;
+          animation: fadeInOut 6s infinite;
+          box-shadow: 0 0 20px #00ff99;
+      }
+      
+      /* Highlight strong tags in yellow inside About section */
+      #about strong {
+          color: yellow;
+          font-weight: bold;
+      }
+      
+      
+      #about-content p {
+          font-size: 1.2rem;
+          max-width: 500px;
+          animation: slideInRight 1.5s ease-in-out;
+          text-align: left;
+          line-height: 1.6;
+      }
+      
+      
+      /* Animations */
+      
+      /* Neon bounce-pop animation */
+      @keyframes neonPop {
+          0% {
+              transform: scale(0.5);
+              opacity: 0;
+              text-shadow: none;
+          }
+          60% {
+              transform: scale(1.1);
+              opacity: 1;
+              text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+          }
+          100% {
+              transform: scale(1);
+              text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99, 0 0 20px #00ff99;
+          }
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      @keyframes slideDown {
+          from {
+              transform: translateY(-40px);
+              opacity: 0;
+          }
+          to {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
+      
+      @keyframes slideInRight {
+          from {
+              transform: translateX(50px);
+              opacity: 0;
+          }
+          to {
+              transform: translateX(0);
+              opacity: 1;
+          }
+      }
+      
+      @keyframes fadeInOut {
+          0%, 100% {
+              opacity: 0;
+          }
+          50% {
+              opacity: 1;
+          }
+      }
+      
+      
+      
+      
+      
+      /* ======= Skills Section - Integrated Styles ======= */
+      
+      #skills {
+          background: url('./Assets/slide2.jpg') no-repeat center center fixed;
+          background-size: cover;
+          background-attachment: fixed;
+          color: #fff;
+          padding: 50px 20px;
+          text-align: center;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          opacity: 0.95;
+      }
+      
+      /* Timeline */
+      .timeline {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+          text-align: center;
+      }
+      
+      /* Skill Boxes */
+      .skill {
+          position: relative;
+          margin: 20px;
+          padding: 20px;
+          background: rgba(0, 255, 153, 0.1);
+          border-radius: 10px;
+          box-shadow: 0 0 15px #00ff99;
+          transition: transform 0.3s;
+          text-align: center;
+          width: 250px;
+          cursor: pointer;
+          overflow: hidden; /* Hide overflow for smooth progress bar */
+      }
+      
+      .skill:hover {
+          transform: scale(1.1);
+          background: rgba(0, 0, 0, 0.8);
+      }
+      
+      /* Skill Logo */
+      .skill-logo {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 15px;
+          transition: transform 0.3s ease;
+      }
+      
+      .skill-logo:hover {
+          transform: rotate(360deg);
+      }
+      
+      /* Progress Bar Container */
+      .progress-container {
+          width: 100%;
+          background: #08141d;
+          border-radius: 5px;
+          overflow: hidden;
+          margin-top: 10px;
+          height: 20px;
+          position: relative;
+      }
+      
+      /* Progress Bar Initial State */
+      .progress-bar {
+          width: 0;
+          height: 100%;
+          background-color: #00ff99;
+          transition: width 1s ease-in-out;
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 0.9em;
+          opacity: 0; /* Initially hidden */
+          transition: width 1s ease-in-out, opacity 0.5s ease-in-out;
+      }
+      
+      /* Show progress bar and percentage text on hover */
+      .skill:hover .progress-bar {
+          display: flex;
+          opacity: 1; /* Make visible on hover */
+          animation: loadProgress 1s forwards;
+      }
+      
+      /* Animation Keyframe */
+      @keyframes loadProgress {
+          from {
+              width: 0%;
+          }
+          to {
+              width: var(--progress, 0%);
+          }
+      }
+      /* Project Section */
+      /* ======= Projects Section ======= */
+      #projects {
+          
+          background-size: cover;
+          background-attachment: fixed;
+          padding: 60px 20px;
+          text-align: center;
+          color: #fff;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          opacity: 0.9;
+          box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+          border-radius: 10px;
+          margin-top: 60px; /* Adjusts for the fixed navbar */
+      }
+      
+      .project-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          padding: 0; /* Remove internal spacing so image fills fully */
+          background: rgba(0, 0, 0, 0.7);
+          background: url('./Assets/Picsart_25-04-05_09-47-05-999.jpg') no-repeat center center fixed;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
+          transition: transform 0.3s ease;
+          width: 90%;
+          max-width: 500px;
+          aspect-ratio: 16 / 9;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .project-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Ensures it fills the box nicely */
+          border-radius: 15px;
+          transition: transform 0.5s ease;
+      }
+      
+      .project-box img:hover {
+          transform: scale(1.1);
+      }
+      
+      .github-link {
+          margin-top: 15px;
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+      }
+      
+      
+      
+      .github-link h4 {
+          padding: 12px 20px;
+          border: 2px solid #00ff99;
+          border-radius: 10px;
+          color: #00ff99;
+          text-align: center;
+          font-size: 1.2em;
+          margin-top: 20px;
+          text-shadow: 0 0 10px #00ff99;
+          transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .github-link h4:hover {
+          background: rgba(0, 255, 153, 0.1);
+          box-shadow: 0 0 20px #00ff99;
+          transform: scale(1.05);
+          cursor: pointer;
+      }
+      
+      
+      
+      /* Section Heading */
+      #projects h2 {
+          font-size: 2.5em;
+          margin-bottom: 20px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+          color: #e7efec;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+          .project-box {
+              max-width: 90%;
+              aspect-ratio: 4 / 3; /* Adjusts for smaller screens */
+          }
+      
+          .github-link img {
+              width: 50px;
+              height: 50px;
+          }
+      }
+      
+      
+      /* ======= Contact Section ======= */
+      #contact {
+          background: url('./Assets/Picsart_25-04-05_09-48-17-560.jpg') no-repeat center center fixed;
+          background-size: cover;
+          padding: 60px 20px;
+          text-align: center;
+          min-height: 100vh;                                            
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-attachment: fixed;
+          box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+          border-radius: 10px;
+          margin-top: 60px;
+          opacity: 0.95;
+          color: #fff;
+      }
+      
+      #contact h2 {
+          margin-bottom: 30px; /* Adds spacing between h2 and the form box */
+      }
+      
+      form {
+          background: rgba(0, 0, 0, 0.7);
+          padding: 30px;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          width: 100%;
+          max-width: 400px;
+      }
+      
+      form input, form textarea {
+          padding: 15px;
+          border: 2px solid #00ff99;
+          border-radius: 8px;
+          background: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          outline: none;
+          transition: box-shadow 0.3s ease;
+      }
+      
+      form input:focus, form textarea:focus {
+          box-shadow: 0 0 10px #00ff99;
+      }
+      
+      form button {
+          background: #00ff99;
+          color: #000;
+          padding: 15px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+          box-shadow: 0 0 10px #00ff99;
+      }
+      
+      form button:hover {
+          background: #00ff99;
+          color: #000;
+          box-shadow: 0 0 20px #00ff99;
+      }
+      
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+          nav {
+              flex-direction: column;
+              align-items: center;
+          }
+      
+          ul {
+              flex-direction: column;
+              align-items: center;
+          }
+      
+          ul li {
+              margin: 10px 0;
+          }
+      
+          .project-box {
+              max-width: 100%;
+          }
+      }
+      
+      
+      /* General styles */
+      
+      /* Section styles */
+      
+      
+      /* Background Images */
+      #about {
+          background: url('./Assets2/New\ Project\ 99\ [5A4CD52].png') no-repeat center center fixed;
+          background-size: cover;
+      }
+      
+      
+      #skills {
+          background: url('./Assets2/New\ Project\ 99\ [ED72A06].png') no-repeat center center fixed;
+          background-size: cover;
+      }
+      
+      #projects {
+          background-image: url('./Assets2/New\ Project\ 99\ [7A43441].png'); /* Replace with your image */
+      }
+      
+      #contact {
+          background-image: url('./Assets2/New\ Project\ 99\ [0AF6472].png'); /* Replace with your image */
+      }
+      
+      /* Form styles */
+      
+      
+      /* Button styles */
+      
+      </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h1 class="logo">Madhan Kumar</h1>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="slide active" id="about">
+        <h2>Hello, I'm Madhan Kumar</h2>
+        <div id="about-content">
+            <img src="./Assets2/developer.webp" alt="Profile Image">
+            <p>A passionate <strong>front-end developer</strong> seeking job opportunities. 
+               Skilled in <strong>HTML, CSS, JavaScript</strong>, and UI/UX design and
+               managing the Front-end of Websites and Web Applications that leads to the success of the overall product. 
+               Check out some of my work in the <strong>Projects </strong>section. 
+               I'm open to Job opportunities where I can contribute, learn and grow.
+                If you have a good opportunity that matches my skills and experience then don't hesitate to <strong>contact</strong> me.
+
+            </p>
+        </div>
+    </section>
+    
+
+
+    <section class="slide" id="skills">
+        <h2>My Skills</h2>
+        <div class="timeline" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 2rem;">
+          <!-- HTML Skill -->
+          <div class="skill" id="html-skill" style="--progress: 90%;" data-progress="90">
+            <img src="./Assets2/download.png" class="skill-logo" alt="HTML">
+            <p>Experienced in <strong>structuring websites</strong> with HTML.</p>
+            <div class="progress-container">
+              <div class="progress-bar" id="html-progress">
+                <span class="progress-text">90%</span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- CSS Skill -->
+          <div class="skill" id="css-skill" style="--progress: 85%;" data-progress="85">
+            <img src="./Assets2/css.png" class="skill-logo" alt="CSS">
+            <p>Skilled in <strong>styling and animations</strong> with CSS.</p>
+            <div class="progress-container">
+              <div class="progress-bar" id="css-progress">
+                <span class="progress-text">85%</span>
+              </div>
+            </div>
+          </div>
+      
+          <!-- JavaScript Skill -->
+          <div class="skill" id="js-skill" style="--progress: 75%;" data-progress="75">
+            <img src="./Assets2/js logo.png" class="skill-logo" alt="JavaScript">
+            <p>Proficient in <strong>dynamic web functionalities</strong> with JavaScript.</p>
+            <div class="progress-container">
+              <div class="progress-bar" id="js-progress">
+                <span class="progress-text">75%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Projects Section -->
+<!-- Projects Section -->
+<section class="slide" id="projects">
+    <h2>My Projects</h2>
+    <div class="project-box">
+        <img src="./Assets2/last.png" alt="Project">
+    </div>
+    <a href="https://github.com/madhan-coder534/Frontend-Projects" class="github-link">
+        <h4>Visit My GitHub Link To Take a Look </h4>
+    </a>
+</section>
+
+
+
+    <!-- Contact Section -->
+    <section class="slide" id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" action="https://formspree.io/f/mvgkwjoo" method="POST">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+   <script>document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+
+    // Reveal sections on scroll
+    const revealOnScroll = () => {
+        slides.forEach((slide) => {
+            const slideTop = slide.getBoundingClientRect().top;
+            if (slideTop < window.innerHeight * 0.75) {
+                slide.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // Contact form submission using Formspree
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("Message Sent Successfully!");
+                form.reset();
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        }).catch(error => {
+            alert("There was a problem submitting the form.");
+        });
+    });
+
+    // Skill hover effect for progress bar
+    document.querySelectorAll('.skill').forEach(skill => {
+        const progressBar = skill.querySelector('.progress-bar');
+        const progressText = progressBar.querySelector('.progress-text');
+        const progressValue = skill.getAttribute('data-progress');
+
+        skill.addEventListener('mouseenter', () => {
+            progressBar.style.transition = 'width 1s ease-in-out, opacity 0.5s';
+            progressBar.style.opacity = '1';
+            progressBar.style.width = `${progressValue}%`;
+            progressText.textContent = `${progressValue}%`;
+        });
+
+        skill.addEventListener('mouseleave', () => {
+            progressBar.style.transition = 'width 0.5s ease-in-out, opacity 0.5s';
+            progressBar.style.width = '0%';
+            progressBar.style.opacity = '0';
+            progressText.textContent = '';
+        });
+    });
+
+    // Carousel scroll effect for skills (on overflow)
+    const timeline = document.querySelector('.timeline');
+    if (timeline) {
+        timeline.style.display = 'flex';
+        timeline.style.overflowX = 'auto';
+        timeline.style.scrollSnapType = 'x mandatory';
+        timeline.style.gap = '2rem';
+
+        document.querySelectorAll('.skill').forEach(skill => {
+            skill.style.scrollSnapAlign = 'start';
+            skill.style.flex = '0 0 80%'; // Slide width
+        });
+    }
+});
+</script> 
+
+</body>
+</html>
